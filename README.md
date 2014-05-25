@@ -8,9 +8,9 @@ Course Project Getting and Cleaning Data
 * Open and read the following .txt files manually:  README file, features_info, activity_labels
 * data.table and reshape2 packages should be installed - if not install using install.packages("data.table") and install.packages("reshape2")
 
-## Variable Names
+# Variable Names
 
-# 1) Merges the training and the test sets to create one data set.
+## 1) Merges the training and the test sets to create one data set.
 
 * features: reads features.txt into R - 561 rows by 2 columns(1st column is just counting the rows)
 * x_train: reads X_train.txt into R - 7352 by 561
@@ -31,14 +31,14 @@ Course Project Getting and Cleaning Data
 * bindxs: bind xx to subjects
 * onedataset: bind xs to yy to get one data set
 
-# 2) Extracts only the measurements on the mean and standard deviation for each measurement. 
+## 2) Extracts only the measurements on the mean and standard deviation for each measurement. 
 
 * getmean: get column indeces showing mean values 
 * getstd: get column indeces showing std values
 * mean_std_col: put column indeces for means, stds, subject, and activity in one vector
 * msdf: extract mean and std values from onedataset
 
-# 3) Uses descriptive activity names to name the activities in the data set
+## 3) Uses descriptive activity names to name the activities in the data set
 *use "activity labels" text file to get descriptions of coded activities in onedataset
 
 * msdf$Activity <- gsub("1","WALKING", msdf$Activity) # Change each 'factor integer' into corresponding activity name
@@ -48,14 +48,14 @@ Course Project Getting and Cleaning Data
 * msdf$Activity <- gsub("5","STANDING", msdf$Activity) # Change each 'factor integer' into corresponding activity name
 * msdf$Activity <- gsub("6","LAYING", msdf$Activity)  # Change each 'factor integer' into corresponding activity name
 
-# 4) Appropriately labels the data set with descriptive activity names.
+## 4) Appropriately labels the data set with descriptive activity names.
 * names(msdf) <- tolower(names(msdf)) #make column names all lower case
 * names(msdf) <- gsub("-", " ", names(msdf)) #get rid of "-" and replace with space for more clarity
 * names(msdf) <- gsub("\\()", " ", names(msdf)) #get rid of "()" and replace with space
 * names(msdf) <- gsub("\\(", " ", names(msdf)) #get rid of "(" and replace with space
 * names(msdf) <- gsub("\\)", "", names(msdf)) #get rid of ")"
 
-# 5) Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+## 5) Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 * library(data.table): access data.table library
 * library(reshape2): access reshape2 library
 * melted: melt dataset into 4 columns
